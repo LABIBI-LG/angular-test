@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { getTask } from './services/get-task';
+import { getTask } from './core/services/get-task';
 
 
 @Component({
