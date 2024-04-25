@@ -1,20 +1,9 @@
-const taskSpyService = {
-  getTask: () => {
-    console.log('這是一個假服務');
-    return {
-      id: 123,
-      title: 'error',
-    };
-  },
-  getTasks: () => {
-    console.log('這是一個假服務');
-    return [];
-  },
-};
-
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TaskService } from './core/services/task/task.service';
+import { TaskRemoteService } from './core/services/task-remote/task-remote.service';
+import { TaskJsonService } from './core/services/task-json/task-json.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +11,15 @@ import { TaskService } from './core/services/task/task.service';
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [{ provide: TaskService, useValue: taskSpyService }],
+  providers: [
+    {
+      provide: TaskService,
+      useFactory: () => {
+      const httpClient = inject(HttpClient);
+      ...
+      }
+    }
+  ],
 })
 export class AppComponent {
   title = 'angular-test';
