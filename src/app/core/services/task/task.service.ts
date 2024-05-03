@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../../interfaces/task.interface';
+import { ITaskService, Task } from '../../interfaces/task.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TaskService {
+
   private tasks: Task[] = [
     {
       id: 1,

@@ -1,9 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, InjectionToken, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TaskService } from './core/services/task/task.service';
-import { TaskRemoteService } from './core/services/task-remote/task-remote.service';
-import { TaskJsonService } from './core/services/task-json/task-json.service';
-import { HttpClient } from '@angular/common/http';
+import { TaskServiceToken } from './core/interfaces/task.interface';
+import { LocaleService } from './core/services/locale/locale.service';
+import {
+  TRANSLATIONS,
+  chineseTranslations,
+  englishTranslations,
+} from './core/constants/translations';
 
 @Component({
   selector: 'app-root',
@@ -11,22 +14,13 @@ import { HttpClient } from '@angular/common/http';
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [
-    {
-      provide: TaskService,
-      useFactory: () => {
-      const httpClient = inject(HttpClient);
-      ...
-      }
-    }
-  ],
+  providers: [{ provide: 'LoadingPath', useValue: 'assets/loading.gif' }],
 })
 export class AppComponent {
   title = 'angular-test';
-  taskService = inject(TaskService);
+  // public loadingPath: string = inject('LoadingPath');
 
   ngOnInit(): void {
-    console.log(this.taskService.getTask(1));
-    console.log(this.taskService.getTasks());
+    // console.log(this.loadingPath);
   }
 }
