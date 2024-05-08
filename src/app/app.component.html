@@ -1,15 +1,1 @@
-<!-- @if(tasks$ | async; as tasks){
-<ul>
-  @for(item of tasks; track $index){
-  <li>{{ item.title }}</li>
-  }
-</ul>
-} -->
-
-<ng-container *ngIf="tasks$ | async as tasks">
-  <ul>
-    <li *ngFor="let item of tasks">
-      {{ item.title }}
-    </li>
-  </ul>
-</ng-container>
+<app-task-list/>

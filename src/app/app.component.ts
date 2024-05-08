@@ -10,11 +10,12 @@ import { RouterOutlet } from '@angular/router';
 import { Observable, interval } from 'rxjs';
 import { Task } from './core/interfaces/task.interface';
 import { useAuthHenfer } from './core/interceptors/auth.interceptor';
+import { TaskListComponent } from './components/task-list/task-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HttpClientModule, CommonModule],
+  imports: [RouterOutlet, HttpClientModule, CommonModule,TaskListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [{ provide: 'LoadingPath', useValue: 'assets/loading.gif' }],
